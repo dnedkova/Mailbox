@@ -9,9 +9,9 @@ Submitted by: Diana Nedkova
  
 * [x] On dragging the message right...
 
-* [ ] Optional: Panning from the edge should reveal the menu
-  * [ ] Optional: If the menu is being revealed when the user lifts their finger, it should continue revealing.
-  * [ ] Optional: If the menu is being hidden when the user lifts their finger, it should continue hiding.
+* [x] Optional: Panning from the edge should reveal the menu
+  * [x] Optional: If the menu is being revealed when the user lifts their finger, it should continue revealing.
+  * [x] Optional: If the menu is being hidden when the user lifts their finger, it should continue hiding.
 * [ ] Optional: Tapping on compose should animate to reveal the compose view.
 * [ ] Optional: Tapping the segmented control in the title should swipe views in from the left or right.
 * [ ] Optional: Shake to undo.
@@ -19,6 +19,7 @@ Submitted by: Diana Nedkova
 Here's walkthrough demos of implemented user stories:
 
 <img src='/mailbox.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='/mailbox-menu.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
