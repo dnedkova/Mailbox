@@ -34,6 +34,7 @@ class MailboxViewController: UIViewController {
     var deleteOriginalX : CGFloat!
     var listOriginalX : CGFloat!
     
+    
     // bg view colors
     
     let gray = UIColor(red: 191/255, green: 191/255, blue: 191/255, alpha: 1)
@@ -85,6 +86,7 @@ class MailboxViewController: UIViewController {
             listView.alpha = 0
             
             
+            
 
         } else if sender.state == UIGestureRecognizerState.Changed {
             
@@ -93,7 +95,10 @@ class MailboxViewController: UIViewController {
             switch translation.x{
             case -60...(0):
                 groupView.backgroundColor = gray
-                laterView.alpha = 1
+                UIView.animateWithDuration(1.2, animations: { () -> Void in
+                    self.laterView.alpha = 1
+                })
+                
                 
             case -260...(-61):
                 groupView.backgroundColor = yellow
@@ -116,7 +121,7 @@ class MailboxViewController: UIViewController {
                 deleteView.alpha = 0
                 listView.alpha = 0
                 groupView.backgroundColor = gray
-                UIView.animateWithDuration(0.3, animations: {
+                UIView.animateWithDuration(1, animations: {
                     
                     self.archiveView.alpha = 1
                     
@@ -174,6 +179,8 @@ class MailboxViewController: UIViewController {
                 }, completion: { (Bool) -> Void in
                     self.listActionsVIew.alpha = 1
                 })
+                listView.alpha = 0
+                laterView.frame.origin.x = laterOriginalX
                 listView.frame.origin.x = listOriginalX
             
             case 1...60:
@@ -212,6 +219,8 @@ class MailboxViewController: UIViewController {
                         self.messageView.frame.origin.x = 0
                         self.feedImage.frame.origin.y = self.feedImage.frame.origin.y  + self.messageView.frame.height
                 })
+                archiveView.frame.origin.x = archiveOriginalX
+                deleteView.frame.origin.x = deleteOriginalX
                 
             default:
                 groupView.backgroundColor = gray
