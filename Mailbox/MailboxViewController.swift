@@ -109,7 +109,6 @@ class MailboxViewController: UIViewController {
             case -260...(-61):
                 groupView.backgroundColor = yellow
                 archiveView.alpha = 0
-                deleteView.alpha = 0
                 laterView.alpha = 1
                 
                 laterView.frame.origin.x = laterOriginalX + translation.x + 65
@@ -123,9 +122,6 @@ class MailboxViewController: UIViewController {
                 
                 
             case 1...60:
-                laterView.alpha = 0
-                deleteView.alpha = 0
-                listView.alpha = 0
                 groupView.backgroundColor = gray
                 UIView.animateWithDuration(1, animations: {
                     
@@ -141,7 +137,6 @@ class MailboxViewController: UIViewController {
             case 261...320:
                 groupView.backgroundColor = red
                 laterView.alpha = 0
-                listView.alpha = 0
                 archiveView.alpha = 0
                 deleteView.alpha = 1
 
