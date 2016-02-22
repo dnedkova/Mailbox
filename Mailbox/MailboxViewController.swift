@@ -28,11 +28,13 @@ class MailboxViewController: UIViewController {
     
     @IBOutlet weak var menuView: UIImageView!
     
+    @IBOutlet weak var inboxView: UIView!
     var messageOriginalX : CGFloat!
     var archiveOriginalX : CGFloat!
     var laterOriginalX : CGFloat!
     var deleteOriginalX : CGFloat!
     var listOriginalX : CGFloat!
+    var inboxOriginalX : CGFloat!
     
     
     // bg view colors
@@ -57,6 +59,10 @@ class MailboxViewController: UIViewController {
         listView.alpha = 0
         rescheduleView.alpha = 0
         listActionsVIew.alpha = 0
+        
+        var edgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "didPanMenu:")
+        edgeGesture.edges = UIRectEdge.Left
+        inboxView.addGestureRecognizer(edgeGesture)
    
         
     }
@@ -271,4 +277,53 @@ class MailboxViewController: UIViewController {
                 self.feedImage.frame.origin.y = self.feedImage.frame.origin.y  + self.messageView.frame.height
         })
     }
+    
+    @IBAction func didPanMenu(sender: UIScreenEdgePanGestureRecognizer) {
+        
+        let translation = sender.translationInView(view)
+        
+        if sender.state == UIGestureRecognizerState.Began {
+            inboxOriginalX = inboxView.frame.origin.x
+            
+            
+
+        } else if sender.state == UIGestureRecognizerState.Changed {
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.inboxView.frame.origin.x = self.inboxOriginalX + translation.x
+            })
+            
+//            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] , animations: { () -> Void in
+//                self.inboxView.frame.origin.x = self.inboxOriginalX
+//                }, completion: { (Bool) -> Void in
+//            })
+            
+
+        } else if sender.state == UIGestureRecognizerState.Ended {
+        
+            switch translation.x {
+                
+            case 160...320:
+                UIView.animateWithDuration(0.6, animations: { () -> Void in
+                    self.inboxView.frame.origin.x = self.inboxOriginalX + 320
+                })
+//                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] , animations: { () -> Void in
+//                    self.inboxView.frame.origin.x = self.inboxOriginalX + 320
+//                    }, completion: { (Bool) -> Void in
+//                })
+            case 0...159:
+//                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] , animations: { () -> Void in
+//                    self.inboxView.frame.origin.x = self.inboxOriginalX
+//                    }, completion: { (Bool) -> Void in
+//                })
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.inboxView.frame.origin.x = self.inboxOriginalX
+                })
+            default:
+                self.inboxView.frame.origin.x = 0
+            }
+
+        }
+    }
+    
 }

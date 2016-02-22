@@ -14,15 +14,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="menu" id="r5x-iY-epA">
-                                <rect key="frame" x="0.0" y="432" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="qgo-WS-onz" userLabel="Inbox View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="1367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1432"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="nav" id="13y-CD-nkp">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="inn-5x-yiA">
-                                        <rect key="frame" x="0.0" y="65" width="320" height="1367"/>
+                                        <rect key="frame" x="0.0" y="65" width="320" height="1432"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="help_label" id="bA0-sb-HCc">
@@ -70,10 +74,6 @@
                                             </imageView>
                                         </subviews>
                                     </scrollView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="nav" id="13y-CD-nkp">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="list" id="ygR-lJ-mtZ" userLabel="list actions">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -111,6 +111,7 @@
                         <outlet property="deleteView" destination="gYO-sF-ujd" id="foJ-LQ-emw"/>
                         <outlet property="feedImage" destination="Wad-4W-WFq" id="iAP-UF-bIe"/>
                         <outlet property="groupView" destination="Ysx-BO-55N" id="IcR-a5-Cds"/>
+                        <outlet property="inboxView" destination="qgo-WS-onz" id="ecY-Jl-NXc"/>
                         <outlet property="laterView" destination="UX8-2e-jkU" id="uB6-UV-2HD"/>
                         <outlet property="listActionsVIew" destination="ygR-lJ-mtZ" id="2Yl-dH-5vE"/>
                         <outlet property="listView" destination="bCW-Te-LgN" id="9j9-OS-f2O"/>
@@ -126,6 +127,11 @@
                         <action selector="didPanMessage:" destination="BYZ-38-t0r" id="tFB-BK-tNu"/>
                     </connections>
                 </panGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="5ob-dK-CTY">
+                    <connections>
+                        <action selector="didPanMenu:" destination="BYZ-38-t0r" id="cm5-8M-Wtz"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="417"/>
         </scene>
